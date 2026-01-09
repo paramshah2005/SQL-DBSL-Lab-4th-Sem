@@ -1,0 +1,20 @@
+create table STUDENT(
+reg_no number(5),
+stu_name varchar(20),
+stu_age number(5),
+stu_dob date, 
+subject1_marks number (4,2), 
+subject2_marks  number(4,2),  
+subject3_marks number(4,1)
+); 
+
+
+insert into STUDENT values (101,'XYZ',20,'03-oct-2005',80,90,100);
+insert into STUDENT values (102,'ABC',19,'03-dec-2006',70,80,60);
+insert into STUDENT values (103,'DEF',21,'03-jan-2004',60,70,80);
+insert into STUDENT values (104,'GHI',20,'03-mar-2005',70,50,30);
+insert into STUDENT values (105,'JKL',18,'03-apr-2007',80,60,50);
+
+insert into STUDENT(reg_no,stu_name,stu_age,subject1_marks,subject2_marks,subject3_marks) values (102,'ABC',19,70,80,60);
+
+insert into STUDENT values (&number,'&name',&number,'&date',&number,&number,&number);

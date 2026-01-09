@@ -1,0 +1,15 @@
+alter table STUDENT add(GENDER char(1) default 'M');
+
+update student set GENDER='F' where reg_no=102;
+
+update student set GENDER='F' where reg_no=104;
+
+select * from student where stu_dob is null;
+
+update student set stu_dob = '03-jul-2006' where stu_dob is null;
+
+delete from student;
+
+delete from student where stu_dob is null;
+
+drop table student;

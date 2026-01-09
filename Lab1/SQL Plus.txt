@@ -1,0 +1,948 @@
+
+SQL*Plus: Release 12.1.0.2.0 Production on Fri Jan 9 07:55:31 2026
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+Enter user-name: cse33@cseorcl
+Enter password:
+Last Successful login time: Fri Jan 09 2026 08:48:19 +05:30
+
+Connected to:
+Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
+With the Partitioning, OLAP, Advanced Analytics and Real Application Testing options
+
+SQL> create table STUDENT(
+  2  reg_no number(5),
+  3  stu_name varchar(20),
+  4  stu_age number(5),
+  5  stu_dob date,
+  6  subject1_marks number (4,2),
+  7  subject2_marks  number(4,2),
+  8  subject3_marks number(4,1));
+create table STUDENT(
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> desc STUDENT
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REG_NO                                             NUMBER(5)
+ STU_NAME                                           VARCHAR2(20)
+ STU_AGE                                            NUMBER(5)
+ SUB1_MARKS                                         NUMBER(4,2)
+ SUB2_MARKS                                         NUMBER(4,1)
+
+SQL> drop table student
+  2  ;
+
+Table dropped.
+
+SQL> clear
+SQL> select * from TAB;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE  CLUSTERID
+------- ----------
+BIN$tpsvIsyvQs+r9Gbqnq18+w==$0
+TABLE
+
+BIN$o3dYP2k5SRm5NsFHnuzKvg==$0
+TABLE
+
+BIN$NeoAscK4S42W3nhW+s39VQ==$0
+TABLE
+
+
+SQL> drop table student;
+drop table student
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> drop table students;
+drop table students
+           *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> create table STUDENT(
+  2  reg_no number(5),
+  3  stu_name varchar(20),
+  4  stu_age number(5),
+  5  stu_dob date,
+  6  subject1_marks number (4,2),
+  7  subject2_marks  number(4,2),
+  8  subject3_marks number(4,1));
+
+Table created.
+
+SQL> select * from TAB;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE  CLUSTERID
+------- ----------
+STUDENT
+TABLE
+
+BIN$tpsvIsyvQs+r9Gbqnq18+w==$0
+TABLE
+
+BIN$o3dYP2k5SRm5NsFHnuzKvg==$0
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE  CLUSTERID
+------- ----------
+BIN$NeoAscK4S42W3nhW+s39VQ==$0
+TABLE
+
+
+SQL> desc STUDENT
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REG_NO                                             NUMBER(5)
+ STU_NAME                                           VARCHAR2(20)
+ STU_AGE                                            NUMBER(5)
+ STU_DOB                                            DATE
+ SUBJECT1_MARKS                                     NUMBER(4,2)
+ SUBJECT2_MARKS                                     NUMBER(4,2)
+ SUBJECT3_MARKS                                     NUMBER(4,1)
+
+SQL> drop table student;
+
+Table dropped.
+
+SQL> select * from TAB;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE  CLUSTERID
+------- ----------
+BIN$tpsvIsyvQs+r9Gbqnq18+w==$0
+TABLE
+
+BIN$o3dYP2k5SRm5NsFHnuzKvg==$0
+TABLE
+
+BIN$cULXaEOiRaeD5MP1yuqV8A==$0
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE  CLUSTERID
+------- ----------
+BIN$NeoAscK4S42W3nhW+s39VQ==$0
+TABLE
+
+
+SQL> select * from TAB;
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE  CLUSTERID
+------- ----------
+BIN$tpsvIsyvQs+r9Gbqnq18+w==$0
+TABLE
+
+BIN$o3dYP2k5SRm5NsFHnuzKvg==$0
+TABLE
+
+BIN$cULXaEOiRaeD5MP1yuqV8A==$0
+TABLE
+
+
+TNAME
+--------------------------------------------------------------------------------
+TABTYPE  CLUSTERID
+------- ----------
+BIN$NeoAscK4S42W3nhW+s39VQ==$0
+TABLE
+
+
+SQL> create table STUDENT(
+  2  reg_no number(5),
+  3  stu_name varchar(20),
+  4  stu_age number(5),
+  5  stu_dob date,
+  6  subject1_marks number (4,2),
+  7  subject2_marks  number(4,2),
+  8  subject3_marks number(4,1)
+  9  );
+
+Table created.
+
+SQL> insert into student values (101,"XYZ",20,'30-oct-05',80,90,100);
+insert into student values (101,"XYZ",20,'30-oct-05',80,90,100)
+                                *
+ERROR at line 1:
+ORA-00984: column not allowed here
+
+
+SQL> insert into STUDENT values (101,"XYZ",20,'30-oct-05',80,90,100);
+insert into STUDENT values (101,"XYZ",20,'30-oct-05',80,90,100)
+                                *
+ERROR at line 1:
+ORA-00984: column not allowed here
+
+
+SQL> insert into STUDENT values(101,"XYZ",20,'30-oct-05',80,90,100);
+insert into STUDENT values(101,"XYZ",20,'30-oct-05',80,90,100)
+                               *
+ERROR at line 1:
+ORA-00984: column not allowed here
+
+
+SQL> desc student
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REG_NO                                             NUMBER(5)
+ STU_NAME                                           VARCHAR2(20)
+ STU_AGE                                            NUMBER(5)
+ STU_DOB                                            DATE
+ SUBJECT1_MARKS                                     NUMBER(4,2)
+ SUBJECT2_MARKS                                     NUMBER(4,2)
+ SUBJECT3_MARKS                                     NUMBER(4,1)
+
+SQL> @C:\Users\Student\Desktop\240905320\Lab1\Lab1_1.txt;
+create table STUDENT(
+             *
+ERROR at line 1:
+ORA-00955: name is already used by an existing object
+
+
+SQL> drop table student
+  2  ;
+
+Table dropped.
+
+SQL> @C:\Users\Student\Desktop\240905320\Lab1\Lab1_1.txt;
+
+Table created.
+
+SQL> desc student
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ REG_NO                                             NUMBER(5)
+ STU_NAME                                           VARCHAR2(20)
+ STU_AGE                                            NUMBER(5)
+ STU_DOB                                            DATE
+ SUBJECT1_MARKS                                     NUMBER(4,2)
+ SUBJECT2_MARKS                                     NUMBER(4,2)
+ SUBJECT3_MARKS                                     NUMBER(4,1)
+
+SQL> insert into STUDENT values (101,'XYZ',20,'03-oct-2005',80,90,100);
+
+1 row created.
+
+SQL> select * from student;
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS
+---------- -------------------- ---------- --------- --------------
+SUBJECT2_MARKS SUBJECT3_MARKS
+-------------- --------------
+       101 XYZ                          20 03-OCT-05             80
+            90            100
+
+
+SQL> select * from student;
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS
+---------- -------------------- ---------- --------- --------------
+SUBJECT2_MARKS SUBJECT3_MARKS
+-------------- --------------
+       101 XYZ                          20 03-OCT-05             80
+            90            100
+
+
+SQL> select * from student;
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS
+---------- -------------------- ---------- --------- --------------
+SUBJECT2_MARKS SUBJECT3_MARKS
+-------------- --------------
+       101 XYZ                          20 03-OCT-05             80
+            90            100
+
+
+SQL> select * from student;
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS
+---------- -------------------- ---------- --------- --------------
+SUBJECT2_MARKS SUBJECT3_MARKS
+-------------- --------------
+       101 XYZ                          20 03-OCT-05             80
+            90            100
+
+
+SQL> insert into STUDENT values (102,'ABC',19,'03-dec-2006',70,80,60);
+
+1 row created.
+
+SQL> insert into STUDENT values (103,'DEF',21,'03-jan-2004',60,70,80);
+
+1 row created.
+
+SQL> insert into STUDENT values (104,'GHI',20,'03-mar-2005',70,50,30);
+
+1 row created.
+
+SQL> insert into STUDENT values (105,'JKL',18,'03-apr-2007',80,60,50);
+
+1 row created.
+
+SQL> select * from student;
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS
+---------- -------------------- ---------- --------- --------------
+SUBJECT2_MARKS SUBJECT3_MARKS
+-------------- --------------
+       101 XYZ                          20 03-OCT-05             80
+            90            100
+
+       102 ABC                          19 03-DEC-06             70
+            80             60
+
+       103 DEF                          21 03-JAN-04             60
+            70             80
+
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS
+---------- -------------------- ---------- --------- --------------
+SUBJECT2_MARKS SUBJECT3_MARKS
+-------------- --------------
+       104 GHI                          20 03-MAR-05             70
+            50             30
+
+       105 JKL                          18 03-APR-07             80
+            60             50
+
+
+SQL> setlinesize 500;
+SP2-0734: unknown command beginning "setlinesiz..." - rest of line ignored.
+SQL> set linesize 500;
+SQL> select * from student;
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS SUBJECT2_MARKS SUBJECT3_MARKS
+---------- -------------------- ---------- --------- -------------- -------------- --------------
+       101 XYZ                          20 03-OCT-05             80             90            100
+       102 ABC                          19 03-DEC-06             70             80             60
+       103 DEF                          21 03-JAN-04             60             70             80
+       104 GHI                          20 03-MAR-05             70             50             30
+       105 JKL                          18 03-APR-07             80             60             50
+
+SQL> insert into STUDENT values (102,'ABC',19,,70,80,60);
+insert into STUDENT values (102,'ABC',19,,70,80,60)
+                                         *
+ERROR at line 1:
+ORA-00936: missing expression
+
+
+SQL> insert into STUDENT(reg_no,stu_name,stu_age,subject1_marks,subject2_marks,subject3_marks) values (102,'ABC',19,70,80,60);
+
+1 row created.
+
+SQL> select * from student;
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS SUBJECT2_MARKS SUBJECT3_MARKS
+---------- -------------------- ---------- --------- -------------- -------------- --------------
+       101 XYZ                          20 03-OCT-05             80             90            100
+       102 ABC                          19 03-DEC-06             70             80             60
+       103 DEF                          21 03-JAN-04             60             70             80
+       104 GHI                          20 03-MAR-05             70             50             30
+       105 JKL                          18 03-APR-07             80             60             50
+       102 ABC                          19                       70             80             60
+
+6 rows selected.
+
+SQL> update student set reg_no=106 where isnull(stu_dob)
+  2  ;
+
+*
+ERROR at line 2:
+ORA-00920: invalid relational operator
+
+
+SQL> update student set reg_no=106 where stu_dob=NULL;
+
+0 rows updated.
+
+SQL> update student set reg_no=106 where stu_dob='';
+
+0 rows updated.
+
+SQL> \
+SP2-0042: unknown command "\" - rest of line ignored.
+SQL> /
+
+0 rows updated.
+
+SQL> /
+
+0 rows updated.
+
+SQL> /
+
+0 rows updated.
+
+SQL> select * from student;
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS SUBJECT2_MARKS SUBJECT3_MARKS
+---------- -------------------- ---------- --------- -------------- -------------- --------------
+       101 XYZ                          20 03-OCT-05             80             90            100
+       102 ABC                          19 03-DEC-06             70             80             60
+       103 DEF                          21 03-JAN-04             60             70             80
+       104 GHI                          20 03-MAR-05             70             50             30
+       105 JKL                          18 03-APR-07             80             60             50
+       102 ABC                          19                       70             80             60
+
+6 rows selected.
+
+SQL> /
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS SUBJECT2_MARKS SUBJECT3_MARKS
+---------- -------------------- ---------- --------- -------------- -------------- --------------
+       101 XYZ                          20 03-OCT-05             80             90            100
+       102 ABC                          19 03-DEC-06             70             80             60
+       103 DEF                          21 03-JAN-04             60             70             80
+       104 GHI                          20 03-MAR-05             70             50             30
+       105 JKL                          18 03-APR-07             80             60             50
+       102 ABC                          19                       70             80             60
+
+6 rows selected.
+
+SQL> insert into STUDENT values (&number,'&name',&number,'&date',&number,&number,&number);
+Enter value for number: 106
+Enter value for name: MNO
+Enter value for number: 22
+Enter value for date: 03-nov-2003
+Enter value for number: 65
+Enter value for number: 45
+Enter value for number: 87
+old   1: insert into STUDENT values (&number,'&name',&number,'&date',&number,&number,&number)
+new   1: insert into STUDENT values (106,'MNO',22,'03-nov-2003',65,45,87)
+
+1 row created.
+
+SQL> /
+Enter value for number: 107
+Enter value for name: PQR
+Enter value for number: 20
+Enter value for date: 03-OCT-2005
+Enter value for number: 34
+Enter value for number: 546
+Enter value for number: 45
+old   1: insert into STUDENT values (&number,'&name',&number,'&date',&number,&number,&number)
+new   1: insert into STUDENT values (107,'PQR',20,'03-OCT-2005',34,546,45)
+insert into STUDENT values (107,'PQR',20,'03-OCT-2005',34,546,45)
+                                                          *
+ERROR at line 1:
+ORA-01438: value larger than specified precision allowed for this column
+
+
+SQL> select * from student;
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS SUBJECT2_MARKS SUBJECT3_MARKS
+---------- -------------------- ---------- --------- -------------- -------------- --------------
+       101 XYZ                          20 03-OCT-05             80             90            100
+       102 ABC                          19 03-DEC-06             70             80             60
+       103 DEF                          21 03-JAN-04             60             70             80
+       104 GHI                          20 03-MAR-05             70             50             30
+       105 JKL                          18 03-APR-07             80             60             50
+       102 ABC                          19                       70             80             60
+       106 MNO                          22 03-NOV-03             65             45             87
+
+7 rows selected.
+
+SQL> /
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS SUBJECT2_MARKS SUBJECT3_MARKS
+---------- -------------------- ---------- --------- -------------- -------------- --------------
+       101 XYZ                          20 03-OCT-05             80             90            100
+       102 ABC                          19 03-DEC-06             70             80             60
+       103 DEF                          21 03-JAN-04             60             70             80
+       104 GHI                          20 03-MAR-05             70             50             30
+       105 JKL                          18 03-APR-07             80             60             50
+       102 ABC                          19                       70             80             60
+       106 MNO                          22 03-NOV-03             65             45             87
+
+7 rows selected.
+
+SQL> insert into STUDENT values (&number,'&name',&number,'&date',&number,&number,&number);
+Enter value for number: 107
+Enter value for name: PQR
+Enter value for number: 20
+Enter value for date: 03-OCT-2005
+Enter value for number: 34
+Enter value for number: 54
+Enter value for number: 45
+old   1: insert into STUDENT values (&number,'&name',&number,'&date',&number,&number,&number)
+new   1: insert into STUDENT values (107,'PQR',20,'03-OCT-2005',34,54,45)
+
+1 row created.
+
+SQL> select * from student;
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS SUBJECT2_MARKS SUBJECT3_MARKS
+---------- -------------------- ---------- --------- -------------- -------------- --------------
+       101 XYZ                          20 03-OCT-05             80             90            100
+       102 ABC                          19 03-DEC-06             70             80             60
+       103 DEF                          21 03-JAN-04             60             70             80
+       104 GHI                          20 03-MAR-05             70             50             30
+       105 JKL                          18 03-APR-07             80             60             50
+       102 ABC                          19                       70             80             60
+       106 MNO                          22 03-NOV-03             65             45             87
+       107 PQR                          20 03-OCT-05             34             54             45
+
+8 rows selected.
+
+SQL> isnull(2)
+SP2-0042: unknown command "isnull(2)" - rest of line ignored.
+SQL> select isnull(2) from tab;
+select isnull(2) from tab
+       *
+ERROR at line 1:
+ORA-00904: "ISNULL": invalid identifier
+
+
+SQL> alter table STUDENT add(GENDER char(1) default 'M');
+
+Table altered.
+
+SQL> select * from student;
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS SUBJECT2_MARKS SUBJECT3_MARKS G
+---------- -------------------- ---------- --------- -------------- -------------- -------------- -
+       101 XYZ                          20 03-OCT-05             80             90            100 M
+       102 ABC                          19 03-DEC-06             70             80             60 M
+       103 DEF                          21 03-JAN-04             60             70             80 M
+       104 GHI                          20 03-MAR-05             70             50             30 M
+       105 JKL                          18 03-APR-07             80             60             50 M
+       102 ABC                          19                       70             80             60 M
+       106 MNO                          22 03-NOV-03             65             45             87 M
+       107 PQR                          20 03-OCT-05             34             54             45 M
+
+8 rows selected.
+
+SQL> update student set GENDER='F' where reg_no=102;
+
+2 rows updated.
+
+SQL> update student set GENDER='F' where reg_no=104;
+
+1 row updated.
+
+SQL> select * from student where stu_dob=NULL;
+
+no rows selected
+
+SQL> select * from student where stu_dob isnull;
+select * from student where stu_dob isnull
+                                    *
+ERROR at line 1:
+ORA-00920: invalid relational operator
+
+
+SQL> select * from student where stu_dob is null;
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS SUBJECT2_MARKS SUBJECT3_MARKS G
+---------- -------------------- ---------- --------- -------------- -------------- -------------- -
+       102 ABC                          19                       70             80             60 F
+
+SQL> update student set stu_dob = '03-jul-2006' where stu_dob is null;
+
+1 row updated.
+
+SQL> select * from student where stu_dob is null;
+
+no rows selected
+
+SQL> select * from student;
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS SUBJECT2_MARKS SUBJECT3_MARKS G
+---------- -------------------- ---------- --------- -------------- -------------- -------------- -
+       101 XYZ                          20 03-OCT-05             80             90            100 M
+       102 ABC                          19 03-DEC-06             70             80             60 F
+       103 DEF                          21 03-JAN-04             60             70             80 M
+       104 GHI                          20 03-MAR-05             70             50             30 F
+       105 JKL                          18 03-APR-07             80             60             50 M
+       102 ABC                          19 03-JUL-06             70             80             60 F
+       106 MNO                          22 03-NOV-03             65             45             87 M
+       107 PQR                          20 03-OCT-05             34             54             45 M
+
+8 rows selected.
+
+SQL> delete from student;
+
+8 rows deleted.
+
+SQL> rollback;
+
+Rollback complete.
+
+SQL> select * from student;
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS SUBJECT2_MARKS SUBJECT3_MARKS G
+---------- -------------------- ---------- --------- -------------- -------------- -------------- -
+       101 XYZ                          20 03-OCT-05             80             90            100 M
+       102 ABC                          19 03-DEC-06             70             80             60 M
+       103 DEF                          21 03-JAN-04             60             70             80 M
+       104 GHI                          20 03-MAR-05             70             50             30 M
+       105 JKL                          18 03-APR-07             80             60             50 M
+       102 ABC                          19                       70             80             60 M
+       106 MNO                          22 03-NOV-03             65             45             87 M
+       107 PQR                          20 03-OCT-05             34             54             45 M
+
+8 rows selected.
+
+SQL> delete from student where dob is null;
+delete from student where dob is null
+                          *
+ERROR at line 1:
+ORA-00904: "DOB": invalid identifier
+
+
+SQL> delete from student where stu_dob is null;
+
+1 row deleted.
+
+SQL> select * from student;
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS SUBJECT2_MARKS SUBJECT3_MARKS G
+---------- -------------------- ---------- --------- -------------- -------------- -------------- -
+       101 XYZ                          20 03-OCT-05             80             90            100 M
+       102 ABC                          19 03-DEC-06             70             80             60 M
+       103 DEF                          21 03-JAN-04             60             70             80 M
+       104 GHI                          20 03-MAR-05             70             50             30 M
+       105 JKL                          18 03-APR-07             80             60             50 M
+       106 MNO                          22 03-NOV-03             65             45             87 M
+       107 PQR                          20 03-OCT-05             34             54             45 M
+
+7 rows selected.
+
+SQL> savepoint SAVE1;
+
+Savepoint created.
+
+SQL> rollback SAVE1;
+rollback SAVE1
+         *
+ERROR at line 1:
+ORA-02181: invalid option to ROLLBACK WORK
+
+
+SQL> rollback SAVE1
+  2  ;
+rollback SAVE1
+         *
+ERROR at line 1:
+ORA-02181: invalid option to ROLLBACK WORK
+
+
+SQL> rollback
+  2  ;
+
+Rollback complete.
+
+SQL> drop table student;
+
+Table dropped.
+
+SQL> select * from student;
+select * from student
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> rollback
+  2  ;
+
+Rollback complete.
+
+SQL> select * from student;
+select * from student
+              *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+SQL> rollback SAVE1;
+rollback SAVE1
+         *
+ERROR at line 1:
+ORA-02181: invalid option to ROLLBACK WORK
+
+
+SQL> @C:\Users\Student\Desktop\240905320\Lab1\Lab1_1.txt;
+
+Table created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+Enter value for number: 106
+Enter value for name: 'MNO'
+Enter value for number: 20
+Enter value for date: '03-jul-05'
+Enter value for number: 30
+Enter value for number: 40
+Enter value for number: 50
+old   1: insert into STUDENT values (&number,'&name',&number,'&date',&number,&number,&number)
+new   1: insert into STUDENT values (106,''MNO'',20,''03-jul-05'',30,40,50)
+insert into STUDENT values (106,''MNO'',20,''03-jul-05'',30,40,50)
+                                  *
+ERROR at line 1:
+ORA-00917: missing comma
+
+
+SQL> select * from student;
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS SUBJECT2_MARKS SUBJECT3_MARKS
+---------- -------------------- ---------- --------- -------------- -------------- --------------
+       101 XYZ                          20 03-OCT-05             80             90            100
+       102 ABC                          19 03-DEC-06             70             80             60
+       103 DEF                          21 03-JAN-04             60             70             80
+       104 GHI                          20 03-MAR-05             70             50             30
+       105 JKL                          18 03-APR-07             80             60             50
+       102 ABC                          19                       70             80             60
+
+6 rows selected.
+
+SQL> update student set stu_dob = '03-jul-2006' where stu_dob is null;
+
+1 row updated.
+
+SQL> delete from student where stu_dob='03-jul-2006;
+ERROR:
+ORA-01756: quoted string not properly terminated
+
+
+SQL> delete from student where stu_dob='03-jul-2006';
+
+1 row deleted.
+
+SQL> select * from student;
+
+    REG_NO STU_NAME                STU_AGE STU_DOB   SUBJECT1_MARKS SUBJECT2_MARKS SUBJECT3_MARKS
+---------- -------------------- ---------- --------- -------------- -------------- --------------
+       101 XYZ                          20 03-OCT-05             80             90            100
+       102 ABC                          19 03-DEC-06             70             80             60
+       103 DEF                          21 03-JAN-04             60             70             80
+       104 GHI                          20 03-MAR-05             70             50             30
+       105 JKL                          18 03-APR-07             80             60             50
+
+SQL> @C:\Users\Student\Desktop\240905320\Lab1\Lab1_3.txt
+)
+*
+ERROR at line 5:
+ORA-00904: : invalid identifier
+
+
+SQL> @C:\Users\Student\Desktop\240905320\Lab1\Lab1_3.txt;
+
+Table created.
+
+SQL> drop table student;
+
+Table dropped.
+
+SQL> drop table employee;
+
+Table dropped.
+
+SQL> @C:\Users\Student\Desktop\240905320\Lab1\Lab1_3.txt;
+
+Table created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+    EMP_NO EMP_NAME             EMP_ADDRESS
+---------- -------------------- ----------------------------------------------------------------------------------------------------
+       101 ABC                  Vadodara
+       102 DEF                  Ahmedabad
+       103 GHI                  Mangalore
+       104 JKL                  Ranchi
+       105 MNO                  Manipal
+
+
+    EMP_NO EMP_NAME             EMP_ADDRESS
+---------- -------------------- ----------------------------------------------------------------------------------------------------
+       105 MNO                  Manipal
+
+
+Table altered.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+ Name                                                                                            Null?     Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ EMP_NO                                                                                   NUMBER(5)
+ EMP_NAME                                                                                 VARCHAR2(20)
+ EMP_ADDRESS                                                                              VARCHAR2(100)
+ SALARY                                                                                   NUMBER(6)
+
+
+    EMP_NO EMP_NAME             EMP_ADDRESS                                                SALARY
+---------- -------------------- ---------------------------------------------------------------------------------------------------- ----------
+       101 ABC                  Vadodara                                                   100000
+       102 DEF                  Ahmedabad                                                  200000
+       103 GHI                  Mangalore                                                  300000
+       104 JKL                  Ranchi                                                     400000
+       105 MNO                  Manipal                                                    500000
+
+
+1 row deleted.
+
+
+    EMP_NO EMP_NAME             EMP_ADDRESS                                                SALARY
+---------- -------------------- ---------------------------------------------------------------------------------------------------- ----------
+       101 ABC                  Vadodara                                                   100000
+       102 DEF                  Ahmedabad                                                  200000
+       104 JKL                  Ranchi                                                     400000
+       105 MNO                  Manipal                                                    500000
+
+
+Table renamed.
+
+
+Table dropped.
+
+SQL> @C:\Users\Student\Desktop\240905320\Lab1\Lab1_3.txt;
+
+Table created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+    EMP_NO EMP_NAME             EMP_ADDRESS
+---------- -------------------- ----------------------------------------------------------------------------------------------------
+       101 ABC                  Vadodara
+       102 DEF                  Ahmedabad
+       103 GHI                  Mangalore
+       104 JKL                  Ranchi
+       105 MNO                  Manipal
+
+
+    EMP_NO EMP_NAME             EMP_ADDRESS
+---------- -------------------- ----------------------------------------------------------------------------------------------------
+       105 MNO                  Manipal
+
+
+Table altered.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+    EMP_NO EMP_NAME             EMP_ADDRESS                                                                                              SALARY
+---------- -------------------- ---------------------------------------------------------------------------------------------------- ----------
+       101 ABC                  Vadodara                                                                                                 100000
+       102 DEF                  Ahmedabad                                                                                                200000
+       103 GHI                  Mangalore                                                                                                300000
+       104 JKL                  Ranchi                                                                                                   400000
+       105 MNO                  Manipal                                                                                                  500000
+
+ Name                                                                                                                                                                   Null?    Type
+ ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- -------- ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ EMP_NO                                                                                                                                                          NUMBER(5)
+ EMP_NAME                                                                                                                                                        VARCHAR2(20)
+ EMP_ADDRESS                                                                                                                                                     VARCHAR2(100)
+ SALARY                                                                                                                                                          NUMBER(6)
+
+
+    EMP_NO EMP_NAME             EMP_ADDRESS                                                                                              SALARY
+---------- -------------------- ---------------------------------------------------------------------------------------------------- ----------
+       101 ABC                  Vadodara                                                                                                 100000
+       102 DEF                  Ahmedabad                                                                                                200000
+       103 GHI                  Mangalore                                                                                                300000
+       104 JKL                  Ranchi                                                                                                   400000
+       105 MNO                  Manipal                                                                                                  500000
+
+
+1 row deleted.
+
+
+    EMP_NO EMP_NAME             EMP_ADDRESS                                                                                              SALARY
+---------- -------------------- ---------------------------------------------------------------------------------------------------- ----------
+       101 ABC                  Vadodara                                                                                                 100000
+       102 DEF                  Ahmedabad                                                                                                200000
+       104 JKL                  Ranchi                                                                                                   400000
+       105 MNO                  Manipal                                                                                                  500000
+
+
+Table renamed.
+
+
+Table dropped.
+
+SQL>
