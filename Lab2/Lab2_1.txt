@@ -1,0 +1,53 @@
+CREATE TABLE Employ (
+    EmpNo INT PRIMARY KEY,
+    EmpName VARCHAR(50) NOT NULL,
+    Gender CHAR(1) NOT NULL CHECK (Gender IN ('M', 'F')),
+    Salary DECIMAL(10,2) NOT NULL,
+    Address VARCHAR(100) NOT NULL,
+    DNo INT
+);
+
+CREATE TABLE Dept (
+    DeptNo INT PRIMARY KEY,
+    DeptName VARCHAR(50) UNIQUE,
+    Location VARCHAR(50)
+);
+
+ALTER TABLE Employ
+ADD CONSTRAINT dno_fk
+FOREIGN KEY (DNo) REFERENCES Dept(DeptNo);
+
+INSERT INTO Dept VALUES(1, 'HR', 'Mumbai');
+INSERT INTO Dept VALUES(2, 'IT', 'Bangalore');
+INSERT INTO Dept VALUES(3, 'Finance', 'Delhi');
+
+INSERT INTO Employ VALUES(101, 'Alice', 'F', 25000, 'Mumbai', 1);
+INSERT INTO Employ VALUES(102, 'Bob', 'M', 30000, 'Bangalore', 2);
+INSERT INTO Employ VALUES(103, 'Charlie', 'M', 28000, 'Delhi', 3);
+INSERT INTO Employ VALUES(104, 'Dennis', 'F', 31000, 'Mangalore', 2);
+INSERT INTO Employ VALUES(105, 'Elizabeth', 'F', 16000, 'Ahmedabad', 1);
+
+INSERT INTO Employ VALUES
+(106, 'Alice', 'G', 25000, 'Mumbai', 1);
+
+INSERT INTO Employ VALUES
+(101, 'Alice', 'F', 25000, 'Mumbai', 1);
+
+DELETE FROM Dept WHERE DeptNo = 1;
+
+ALTER TABLE Employ DROP CONSTRAINT dno_fk;
+
+ALTER TABLE Employ
+ADD CONSTRAINT dno_fk
+FOREIGN KEY (DNo) REFERENCES Dept(DeptNo)
+ON DELETE CASCADE;
+
+ALTER TABLE Employ ADD CONSTRAINT df_salary DEFAULT 10000 FOR Salary;
+
+ALTER TABLE Employ
+ADD CONSTRAINT salary_default
+CHECK(Salary>10000);
+
+INSERT INTO Employ VALUES(107, 'Elizabeth', 'F', 1600, 'Ahmedabad', 1);
+
+

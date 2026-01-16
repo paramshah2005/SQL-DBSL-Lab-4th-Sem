@@ -1,0 +1,57 @@
+select name,dept_name from student;
+
+select * from instructor where dept_name='Comp. Sci.';
+
+select title from course where dept_name='Comp. Sci.' and credits=3;
+
+select c.course_id, c.title
+from Course c, Takes t
+where c.course_id = t.course_id
+and t.ID = 12345;
+
+select * from instructor where salary between 40000 and 90000;
+
+select ID from Instructor
+where ID not in (
+    SELECT id FROM Teaches
+);
+
+select s.name, c.title, t.year
+from Student s, Takes t, Section sec, Course c
+where s.ID = t.ID
+AND t.course_id = sec.course_id
+AND t.sec_id = sec.sec_id
+AND t.semester = sec.semester
+AND t.year = sec.year
+AND sec.room_number = 100
+AND c.course_id = t.course_id;
+
+SELECT s.name, c.course_id, c.title AS c_name
+FROM Student s, Takes t, Course c
+WHERE s.ID = t.ID
+AND t.course_id = c.course_id
+AND t.year = 2010;
+
+SELECT name, salary AS inst_salary
+FROM Instructor
+WHERE salary > (
+    SELECT MIN(salary)
+    FROM Instructor
+    WHERE dept_name = 'Comp. Sci.'
+);
+
+SELECT name FROM Instructor
+WHERE dept_name LIKE '%ch%';
+
+SELECT name, LENGTH(name) FROM Student;
+
+SELECT dept_name, SUBSTRING(dept_name, 3, 3) FROM Department;
+
+SELECT UPPER(name) FROM Instructor;
+
+SELECT IFNULL(salary, 0) FROM Instructor;
+
+SELECT salary, ROUND(salary/3, -2) FROM Instructor;
+
+
+
