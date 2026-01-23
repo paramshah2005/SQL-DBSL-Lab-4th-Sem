@@ -7,51 +7,64 @@ select title from course where dept_name='Comp. Sci.' and credits=3;
 select c.course_id, c.title
 from Course c, Takes t
 where c.course_id = t.course_id
-and t.ID = 12345;
+and t.id = 12345;
 
 select * from instructor where salary between 40000 and 90000;
 
-select ID from Instructor
-where ID not in (
-    SELECT id FROM Teaches
+select id from Instructor
+where id not in (
+    select id from Teaches
 );
 
 select s.name, c.title, t.year
 from Student s, Takes t, Section sec, Course c
-where s.ID = t.ID
+where s.id = t.id
 AND t.course_id = sec.course_id
 AND t.sec_id = sec.sec_id
 AND t.semester = sec.semester
 AND t.year = sec.year
-AND sec.room_number = 100
+AND sec.room_number = 101
 AND c.course_id = t.course_id;
 
-SELECT s.name, c.course_id, c.title AS c_name
-FROM Student s, Takes t, Course c
-WHERE s.ID = t.ID
+select s.name, c.course_id, c.title AS c_name
+from Student s, Takes t, Course c
+WHERE s.id = t.id
 AND t.course_id = c.course_id
 AND t.year = 2010;
 
-SELECT name, salary AS inst_salary
-FROM Instructor
+select name, salary AS inst_salary
+from Instructor
 WHERE salary > (
-    SELECT MIN(salary)
-    FROM Instructor
+    select MIN(salary)
+    from Instructor
     WHERE dept_name = 'Comp. Sci.'
 );
 
-SELECT name FROM Instructor
+select name from Instructor
 WHERE dept_name LIKE '%ch%';
 
-SELECT name, LENGTH(name) FROM Student;
+select name, length(name) from Student;
 
-SELECT dept_name, SUBSTRING(dept_name, 3, 3) FROM Department;
+select dept_name, substring(dept_name, 3, 3) from Department;
 
-SELECT UPPER(name) FROM Instructor;
+select upper(name) from Instructor;
 
-SELECT IFNULL(salary, 0) FROM Instructor;
+select nvl(salary, 0) from Instructor;
 
-SELECT salary, ROUND(salary/3, -2) FROM Instructor;
+select salary, round(salary/3, -2) from Instructor;
 
+alter table employ add DOB date;
 
+update employ SET DOB = date '1995-08-15' WHERE EmpNo = 101;
+update employ SET DOB = date '1992-01-10' WHERE EmpNo = 102;
+update employ SET DOB = date '2006-02-25' WHERE EmpNo = 103;
+update employ SET DOB = date '2005-10-30' WHERE EmpNo = 104;
+update employ SET DOB = date '2000-03-20' WHERE EmpNo = 105;
 
+select to_char(DOB, 'DD-MON-YYYY') FROM employ;
+select to_char(DOB, 'DD-MON-YY') FROM employ;
+select to_char(DOB, 'DD-MM-YY') FROM employ;
+
+select EmpName, to_char(DOB, 'YEAR') from employ;
+select EmpName, initcap(to_char(DOB, 'YEAR')) from employ;
+select EmpName, lower(to_char(DOB, 'YEAR')) from employ;
