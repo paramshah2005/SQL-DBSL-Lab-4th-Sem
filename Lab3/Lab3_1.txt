@@ -19,11 +19,11 @@ where course_id not in (
 
 select * 
 from course
-WHERE semester = 'Fall' AND year = 2009
-AND course_id IN (
-    SELECT course_id
-    FROM Section
-    WHERE semester = 'Spring' AND year = 2010
+where semester = 'Fall' and year = 2009
+and course in (
+    select course_id
+    from section
+    where semester = 'Spring' and year = 2010
 );
 
 select count(id) as number_of_students
@@ -34,9 +34,109 @@ where course_id in (
     where id=10101
 );
 
+select * 
+from course
+where semester = 'Fall' and year = 2009
+and course_id not in (
+    select course_id
+    from section
+    where semester = 'Spring' and year = 2010
+);
+
 select name from student
 where name in (
     select name
     from instructor
 );
 
+select name
+from instructor
+where salary > some (
+    select salary
+    from instructor
+    where dept_name = 'Biology'
+);
+
+select name
+from instructor
+where salary > all (
+    select salary
+    from instructor
+    where dept_name = 'Biology'
+);
+
+select dept_name, avg(salary) as avg_salary
+from instructor
+group by dept_name;
+
+select dept_name
+from department
+where budget < (
+    select avg(salary)
+    from instructor
+);
+
+select * from section s1 
+where s1.semester = 'Fall'
+and s1.year = 2009
+and exists (
+    select * from section s2
+    where semester = 'Spring'
+    and year = 2010
+    and s1.course_id=s2.course_id
+);
+ 
+select s.id, s.name
+from student s
+where not exists (
+    select c.course_id
+    from course c
+    where c.dept_name = 'biology'
+      and not exists (
+          select *
+          from takes t
+          where t.id = s.id
+            and t.course_id = c.course_id
+      )
+);
+
+//14th Doubtful
+
+select course_id
+from section
+where year = 2009
+group by course_id
+having count(*) <= 1;
+
+select s.id, s.name
+from student s
+where (
+  select count(distinct t.course_id)
+  from takes t
+  join course c on t.course_id=c.course_id
+  where t.id=s.id
+    and c.dept_name='Comp. Sci.'
+) >= 2;
+
+select dept_name from
+(
+select dept_name, avg(salary)
+from instructor
+group by(dept_name)
+having avg(salary)>42000
+);
+
+create view all_courses as
+select S.course_id, S.sec_id, S.building, S.room_number
+from section S
+join course C ON S.course_id = C.course_id
+where C.dept_name = 'Physics' 
+  and S.semester = 'Fall' 
+  and S.year = 2009;
+
+select * FROM all_courses;
+
+create view department_total_salary as
+select dept_name, sum(salary) as total_salary
+from instructor
+group by dept_name;

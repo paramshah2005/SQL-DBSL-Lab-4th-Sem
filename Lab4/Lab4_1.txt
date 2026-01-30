@@ -1,0 +1,40 @@
+select course_id, count(id) as num_students
+from takes
+group by course_id;
+
+select c.dept_name
+from course c
+join takes t on c.course_id = t.course_id
+group by c.dept_name
+having count(distinct t.id) > 10;
+
+select dept_name, count(course_id) as total_courses
+from course
+group by dept_name;
+
+select dept_name, avg(salary) as avg_salary
+from instructor
+group by dept_name
+having avg(salary) > 42000;
+
+select s.course_id, s.sec_id, count(t.id) as enrolment
+from section s
+left join takes t
+on s.course_id = t.course_id
+and s.sec_id = t.sec_id
+and s.semester = t.semester
+and s.year = t.year
+where s.semester = 'Spring' 
+and s.year = 2009
+group by s.course_id, s.sec_id;
+
+select distinct course_id
+from prereq
+order by course_id asc;
+
+select *
+from instructor
+order by salary desc;
+
+
+
