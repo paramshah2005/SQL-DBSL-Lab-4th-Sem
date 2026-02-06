@@ -36,5 +36,99 @@ select *
 from instructor
 order by salary desc;
 
+SELECT MAX(total_salary) AS max_total_salary
+FROM (
+    SELECT dept_name, SUM(salary) AS total_salary
+    FROM instructor
+    GROUP BY dept_name
+) AS dept_salaries;
 
+
+SELECT dept_name, AVG(salary) AS avg_salary
+FROM instructor
+GROUP BY dept_name
+HAVING AVG(salary) > 42000;
+
+
+SELECT course_id, sec_id, semester, year, COUNT(ID) AS enrolment
+FROM takes
+WHERE semester = 'Spring' AND year = 2010
+GROUP BY course_id, sec_id, semester, year
+HAVING COUNT(ID) = (
+    SELECT MAX(cnt)
+    FROM (
+        SELECT COUNT(ID) AS cnt
+        FROM takes
+        WHERE semester = 'Spring' AND year = 2010
+        GROUP BY course_id, sec_id
+    ) AS enrolments
+);
+
+SELECT i.name
+FROM instructor i
+WHERE NOT EXISTS (
+    SELECT s.ID
+    FROM student s
+    WHERE s.dept_name = 'Comp. Sci.'
+    AND NOT EXISTS (
+        SELECT *
+        FROM teaches t
+        JOIN takes tk
+          ON t.course_id = tk.course_id
+         AND t.sec_id = tk.sec_id
+         AND t.semester = tk.semester
+         AND t.year = tk.year
+        WHERE t.ID = i.ID
+          AND tk.ID = s.ID
+    )
+);
+
+
+SELECT dept_name, AVG(salary) AS avg_salary
+FROM instructor
+GROUP BY dept_name
+HAVING AVG(salary) > 50000
+   AND COUNT(ID) > 5;
+
+WITH max_budget AS (
+    SELECT MAX(budget)
+    FROM department
+)
+SELECT dept_name, budget
+FROM department
+WHERE budget = (SELECT max_budget FROM max_budget);
+
+WITH dept_total_salary AS (
+    SELECT dept_name, SUM(salary) AS total_salary
+    FROM instructor
+    GROUP BY dept_name
+),
+avg_total_salary AS (
+    SELECT AVG(total_salary) AS avg_salary
+    FROM dept_total_salary
+)
+SELECT d.dept_name, d.total_salary
+FROM dept_total_salary d
+WHERE d.total_salary > (SELECT avg_salary FROM avg_total_salary);
+
+
+SAVEPOINT before_transfer;
+
+INSERT INTO department (dept_name, building, budget)
+SELECT 'IT', 'Taylor', 100000
+WHERE NOT EXISTS (
+    SELECT * FROM department WHERE dept_name = 'IT'
+);
+
+UPDATE student
+SET dept_name = 'IT'
+WHERE dept_name = 'Comp. Sci.';
+
+SAVEPOINT before_salary_update;
+
+UPDATE instructor
+SET salary = CASE
+    WHEN salary > 100000 THEN salary * 1.03
+    ELSE salary * 1.05
+END;
 

@@ -1,0 +1,86 @@
+select * from employee where fname='John' and minit='B' and lname='Smith';
+
+select * from employee e join department d on e.dno = d.dnumber where dname='Research';
+
+
+SELECT p.Pnumber,
+       p.Dnum AS Controlling_Department_Number,
+       m.Lname AS Manager_Last_Name,
+       m.Address AS Manager_Address,
+       m.Bdate AS Manager_Birth_Date
+FROM Project p
+JOIN Department d
+  ON p.Dnum = d.Dnumber
+JOIN Employee m
+  ON d.Mgr_ssn = m.Ssn
+WHERE p.Plocation = 'Stanford';
+
+
+SELECT e.Fname  AS Emp_Fname,
+       e.Lname  AS Emp_Lname,
+       s.Fname  AS Supervisor_Fname,
+       s.Lname  AS Supervisor_Lname
+FROM Employee e
+LEFT JOIN Employee s
+  ON e.Super_ssn = s.Ssn;
+
+
+SELECT DISTINCT p.Pname, p.Pnumber
+FROM Project p
+JOIN Works_on w
+  ON w.Pno = p.Pnumber
+JOIN Employee e
+  ON e.Ssn = w.Essn
+WHERE e.Lname = 'Smith'
+UNION
+SELECT DISTINCT p.Pname, p.Pnumber
+FROM Project p
+JOIN Department d
+  ON d.Dnumber = p.Dnum
+JOIN Employee m
+  ON m.Ssn = d.Mgr_ssn
+WHERE m.Lname = 'Smith';
+
+
+SELECT e.Ssn,
+       e.Fname,
+       e.Lname,
+       e.Salary AS Current_Salary,
+       ROUND(e.Salary * 1.10, 2) AS Increased_Salary
+FROM Employee e
+JOIN Works_on w
+  ON e.Ssn = w.Essn
+JOIN Project p
+  ON p.Pnumber = w.Pno
+WHERE p.Pname = 'ProductX';
+
+
+SELECT d.Dname AS Department,
+       e.Lname,
+       e.Fname,
+       p.Pname AS Project,
+       p.Pnumber
+FROM Department d
+JOIN Employee e
+  ON e.Dno = d.Dnumber
+JOIN Works_on w
+  ON w.Essn = e.Ssn
+JOIN Project p
+  ON p.Pnumber = w.Pno
+ORDER BY d.Dname, e.Lname, e.Fname;
+
+
+select e.fname, e.minit, e.lname from employee e
+join dependent d
+on e.ssn = d.essn
+where e.sex = d.sex
+and e.fname=d.dependent_name;
+
+
+SELECT e.Fname, e.Lname
+FROM Employee e
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM Dependent d
+    WHERE d.Essn = e.Ssn
+);
