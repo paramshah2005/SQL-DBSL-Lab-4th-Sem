@@ -84,3 +84,32 @@ WHERE NOT EXISTS (
     FROM Dependent d
     WHERE d.Essn = e.Ssn
 );
+
+select e.fname, e.minit ,e.lname , e.ssn from employee e 
+join dependent d 
+on d.essn=e.ssn 
+where e.ssn in (
+    select super_ssn from employee
+);
+
+select sum(salary), max(salary), min(salary), avg(salary) from employee;
+
+
+select p.Pnumber, p.Pname, count(w.Essn) 
+from project p 
+join works_on w 
+on p.Pnumber = w.Pno
+group by p.Pnumber,p.Pname;
+
+select p.Pnumber, p.Pname, count(w.Essn) 
+from project p 
+join works_on w 
+on p.Pnumber = w.Pno
+group by p.Pnumber,p.Pname
+having count(w.essn)>2;
+
+select dno, count(*)
+from employee 
+where salary > 40000
+group by dno
+having count(*) > 5;
